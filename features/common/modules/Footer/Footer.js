@@ -64,11 +64,11 @@ const Footer = () => {
           gap='5'
         >
           <Text fontSize='lg' fontWeight='black'>
-            SAFE AND SOUND
+            GARANTIMEX
           </Text>
           {/* </Box> */}
           <Text fontSize='xs' textAlign='center'>
-            Todos los derechos reservados- Copyright SAFE AND SOUND 2021
+            Todos los derechos reservados- Copyright GARANTIMEX 2021
           </Text>
         </Flex>
       </Box>

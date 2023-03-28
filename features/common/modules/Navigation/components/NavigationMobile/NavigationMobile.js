@@ -21,7 +21,7 @@ function NavigationMobile() {
               CASAZ (m)
             </Text> */}
             <Image
-              src='./hero/sasLogo.png'
+              src='./hero/garantimex.png'
               alt='SAS'
               width='200px'
             />
