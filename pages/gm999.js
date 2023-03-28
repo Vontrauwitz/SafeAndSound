@@ -4,24 +4,42 @@ import DefaultLayout from './../features/Layouts/DefaultLayout/DefaultLayout';
 import { HiCheck, HiOutlineXCircle } from 'react-icons/hi2';
 
 const Gm999 = () => {
+  let startDate = '2023-03-27'
+  let endDate = '2024-03-27'
   const mobile = useBreakpointValue({ base: true, md: false }) ?? true;
   const today = new Date().toLocaleDateString('en-US', { day: '2-digit', month: '2-digit', year: 'numeric' }).replace(/\//g, '-');
-  const cutoffDate = Date.parse('2024-03-27');
+  const cutoffDate = Date.parse(endDate);
   const message = Date.parse(today) < cutoffDate ?
     <Flex
-      alignItems='center'
       justifyContent='center'
       color='green.400'
+      alignItems='center'
+      margin='0.5em'
+      padding='0.5em'
     >
-      <HiCheck /><Box>garantía <strong>válida</strong></Box>
+      <HiCheck />
+      <Box
+        marginLeft='0.5em'
+        marginBottom='0.5em'
+      >
+        garantía <strong>válida</strong>
+      </Box>
     </Flex>
     :
     <Flex
-      alignItems='center'
       justifyContent='center'
       color='red.400'
+      alignItems='center'
+      margin='0.5em'
+      padding='0.5em'
     >
-      <HiOutlineXCircle /><Box>garantía <strong>inválida</strong></Box>
+      <HiOutlineXCircle />
+      <Box
+        marginLeft='0.5em'
+        marginBottom='0.5em'
+      >
+        garantía <strong>inválida</strong>
+      </Box>
     </Flex>
   return (
     <Fade in>
@@ -226,13 +244,13 @@ const Gm999 = () => {
                 >FECHA DE INICIO</Td>
                 <Td
                   color='blue'
-                >27/03/2023</Td>
+                >{startDate}</Td>
               </Tr>
               <Tr>
                 <Td>FECHA DE TERMINO</Td>
                 <Td
                   color='red'
-                >27/03/2024</Td>
+                >{endDate}</Td>
               </Tr>
             </Tbody>
           </Table>
