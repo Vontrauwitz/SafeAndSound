@@ -1,13 +1,35 @@
-import { Box, Fade, Table, Tbody, Td, Th, Thead, Tr, useBreakpointValue } from '@chakra-ui/react';
+import { Box, Fade, Flex, Table, Tbody, Td, Th, Thead, Tr, useBreakpointValue } from '@chakra-ui/react';
 import React from 'react';
 import DefaultLayout from './../features/Layouts/DefaultLayout/DefaultLayout';
+import { HiCheck, HiOutlineXCircle } from 'react-icons/hi2';
 
 const Gm999 = () => {
   const mobile = useBreakpointValue({ base: true, md: false }) ?? true;
+  const today = new Date().toLocaleDateString('en-US', { day: '2-digit', month: '2-digit', year: 'numeric' }).replace(/\//g, '-');
+  const cutoffDate = Date.parse('2024-03-27');
+  const message = Date.parse(today) < cutoffDate ?
+    <Flex
+      alignItems='center'
+      justifyContent='center'
+      color='green.400'
+    >
+      <HiCheck /><Box>garantía <strong>válida</strong></Box>
+    </Flex>
+    :
+    <Flex
+      alignItems='center'
+      justifyContent='center'
+      color='red.400'
+    >
+      <HiOutlineXCircle /><Box>garantía <strong>inválida</strong></Box>
+    </Flex>
   return (
     <Fade in>
       <DefaultLayout>
         <Box p={4}>
+          <Box>
+            {message}
+          </Box>
           <Table variant="simple" size={mobile ? "sm" : "md"}>
             <Thead>
               <Tr>
