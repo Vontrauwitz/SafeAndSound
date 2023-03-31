@@ -41,7 +41,7 @@ export const garantias = [
 ];
 
 export const trabajaConNosotros = [
-  { name: "Clientes", link: "/" },
+  { name: "Clientes", link: "/clientes" },
   { name: "Talleres", link: "/" },
 ];
 

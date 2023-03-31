@@ -1,66 +1,69 @@
-import { Box, Fade, Text } from '@chakra-ui/react';
-import React from 'react';
-import HeroForm from './HeroForm/HeroForm';
+import React, { useState, useEffect } from "react";
+import { Box, Heading, Text, Button, Fade, useMediaQuery } from "@chakra-ui/react";
+import dynamic from "next/dynamic";
+
+const ReactPlayer = dynamic(() => import("react-player"), { ssr: false });
 
 const HeroBanner = () => {
+  const [showVideo, setShowVideo] = useState(false);
+  const [isLargerThanMobile] = useMediaQuery("(min-width: 768px)");
+
+  useEffect(() => {
+    setShowVideo(true);
+  }, []);
+
   return (
     <Fade in>
       <Box
-        position='relative'
-        minHeight={{ base: '110vh', sm: '60vh' }}
-        backgroundImage={`url('./hero/madrehijaplaya.png')`}
-        backgroundPosition='center'
-        backgroundSize='cover'
-        backgroundAttachment='fixed'
+        bg="black"
+        minHeight="100vh"
+        display="flex"
+        alignItems="center"
+        justifyContent="center"
+        flexDirection="column"
+        position="relative"
       >
-        <Box
-          position='absolute'
-          width='100%'
-          height='100%'
-          opacity='0.45'
-          backgroundColor='blue.900'
-        />
-        <Box
-          display='flex'
-          flexDirection={{ base: 'column', sm: 'row' }}
-          alignItems='center'
-          justifyContent={{ base: 'flex-start', sm: 'space-between' }}
-          maxWidth='1280px'
-          position='absolute'
-          color='white'
-          fontWeight='light'
-          left='0'
-          right='0'
-          bottom='0'
-          top='0'
-          margin='0 auto'
-          padding='2rem'
+        {showVideo && (
+          <>
+            <Box
+              position="absolute"
+              top={0}
+              left={0}
+              width="100%"
+              height="100%"
+              backgroundColor="rgba(0, 0, 0, 0.4)"
+              zIndex={-1}
+            />
+            <ReactPlayer
+              url={isLargerThanMobile ? "/hero/auto2.mp4" : "/hero/auto1.mp4"}
+              playing={true}
+              loop={true}
+              muted={true}
+              width="100%"
+              height="100%"
+              style={{ position: "absolute", top: 0, left: 0 }}
+            />
+          </>
+        )}
+        <Heading color="blue.600" mb={4} zIndex={1}>
+          Garantías de Autos
+        </Heading>
+        <Text
+          color="blue.600"
+          fontSize="xl"
+          mb={8}
+          zIndex={1}
+          paddingLeft={{ base: "2", md: "0" }}
+          paddingRight={{ base: "2", md: "0" }}
         >
-          <Box
-            width={{ base: '100%', sm: '50%' }}
-            padding='1rem'
-          >
-            <Text
-              fontSize={{ base: '3xl', sm: '4xl' }}
-              lineHeight='shorter'
-              marginBottom='1.5rem'
-            >
-              Descarga nuestra <strong>infografía de nuestras garantias</strong> hoy...
-            </Text>
-            <Text fontSize={{ base: 'sm', sm: 'sm' }}>
-              Un PDF gratis con todos nuestros servicios y coberturas para que mantengas protegido tu futuro.
-            </Text>
-          </Box>
-          <Box
-            width={{ base: '100%', sm: 'auto' }}
-            marginTop={{ base: '2rem', sm: '0' }}
-          >
-            <HeroForm />
-          </Box>
-        </Box>
+          Protege tu inversión con nuestras garantías de autos.
+        </Text>
+        <Button colorScheme="blue" size="lg" zIndex={1}>
+          Obtén tu garantía ahora
+        </Button>
       </Box>
     </Fade>
   );
-}
+};;
 
 export default HeroBanner;

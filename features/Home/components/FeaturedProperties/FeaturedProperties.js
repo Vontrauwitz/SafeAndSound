@@ -1,40 +1,96 @@
-import { Box, Text } from '@chakra-ui/react';
-import React from 'react';
-import PropertySlider from './components/PropertySlider';
+import React, { useState } from 'react';
+import { Box, Image, Button } from "@chakra-ui/react";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
-const FeaturedProperties = ({ featuredProperties }) => {
+const slides = [
+  {
+    id: 1,
+    imageUrl: "/hero/slide1.jpg",
+    text: "Cubre los daños mecánicos y eléctricos para garantizar la seguridad del producto."
+  },
+  {
+    id: 2,
+    imageUrl: "/hero/slide2.jpg",
+    text: "Genera plusvalía en tu inversión para que puedas obtener un beneficio adicional en el futuro."
+  },
+  {
+    id: 3,
+    imageUrl: "/hero/slide3.jpg",
+    text: "Trámite fácil para asegurar una compra rápida y sencilla."
+  },
+  {
+    id: 4,
+    imageUrl: "/hero/slide4.jpg",
+    text: "El producto tiene una larga vida útil para que puedas disfrutar de él por más tiempo."
+  }
+];
+
+const SlideText = ({ text, fontSize }) => (
+  <Box
+    position="absolute"
+    top="50%"
+    left="50%"
+    transform="translate(-50%, -50%)"
+    color="white"
+    fontWeight='bold'
+    textAlign="center"
+    padding={2}
+    fontSize={fontSize}
+    fontFamily="'Oswald', sans-serif"
+  >
+    {text}
+  </Box>
+);
+
+const FeaturedProperties = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 5000,
+    afterChange: setCurrentSlide
+  };
+
   return (
-    <Box backgroundColor='blue.50'>
-      <Box
-        maxWidth='1280px'
-        margin='0 auto'
-        color='gray.600'
-        paddingY={{ base: '3rem', sm: '6rem' }}
-      >
-        <Text
-          fontSize={{ base: '4xl', sm: '5xl' }}
-          lineHeight='shorter'
-          fontWeight='light'
-          paddingX='2rem'
-          textAlign='center'
-        >
-          Pensando que componente hacer aqui!!!!!
-        </Text>
-        <Text
-          fontSize='2xl'
-          fontWeight='light'
-          marginTop='1rem'
-          marginBottom='3rem'
-          paddingX='2rem'
-          textAlign='center'
-        >
-          No tengo la mas pendeja idea
-        </Text>
-        SLIDER de fotos?
-        <PropertySlider />
-      </Box>
+    <Box overflow="hidden" style={{ marginBottom: "-6px" }}>
+      <Slider {...settings}>
+        {slides.map((slide, index) => (
+          <Box
+            key={slide.id}
+            minHeight={{ base: "200px", md: "400px" }}
+            position="relative"
+            onClick={() => setCurrentSlide(index)}
+            cursor="pointer"
+          >
+            <Box
+              position="absolute"
+              top={0}
+              left={0}
+              width="100%"
+              height="100%"
+              bgGradient="linear(to-t, blackAlpha.500, transparent)"
+            />
+            <Image
+              src={slide.imageUrl}
+              alt={`Slide ${index}`}
+              objectFit="cover"
+              width={{ base: "100%", md: "75%" }}
+              height={{ base: "200px", md: "400px" }}
+              mx="auto"
+            />
+            <SlideText text={slide.text} />
+          </Box>
+        ))}
+      </Slider>
     </Box>
   );
-}
+};
 
 export default FeaturedProperties;

@@ -25,9 +25,9 @@ const NavigationDesktop = () => {
               display='flex'
               alignItems='center'>
               <Image
-                src='./hero/garantimex.png'
-                alt='SAS'
-                width='200px'
+                src='./hero/garantimexlogo.png'
+                alt='garantimex'
+                width='100px'
               />
             </Box>
           </Link>

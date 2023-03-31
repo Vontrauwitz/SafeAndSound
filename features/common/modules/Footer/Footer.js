@@ -10,7 +10,7 @@ const Footer = () => {
       <Box
         maxWidth='1280px'
         margin='0 auto'
-        paddingY='1rem'
+        paddingY='.5rem'
         paddingX={{ base: '2rem', sm: '.5rem' }}
       >
         <SimpleGrid
@@ -31,7 +31,7 @@ const Footer = () => {
               <FooterLink key={item.name} {...item} />
             ))}
           </Flex>  <Flex flexDirection='column'>
-            <FooterHeader title='Soy' />
+            <FooterHeader title='Contactanos' />
             {trabajaConNosotros.map((item) => (
               <FooterLink key={item.name} {...item} />
             ))}
@@ -52,12 +52,6 @@ const Footer = () => {
         flexDirection='column'
         color='white'
       >
-        {/* <Box
-          display='flex'
-          flexDirection='row'
-          gap='2'
-          alignItems='center'
-        > */}
         <Flex
           alignItems='center'
           justifyContent='center'

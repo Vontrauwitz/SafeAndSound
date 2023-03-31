@@ -5,7 +5,7 @@ import { HiCheck, HiOutlineXCircle } from 'react-icons/hi2';
 
 const Gm999 = () => {
   let startDate = '2023-03-27'
-  let endDate = '2024-03-27'
+  let endDate = '2019-03-27'
   const mobile = useBreakpointValue({ base: true, md: false }) ?? true;
   const today = new Date().toLocaleDateString('en-US', { day: '2-digit', month: '2-digit', year: 'numeric' }).replace(/\//g, '-');
   const cutoffDate = Date.parse(endDate);
