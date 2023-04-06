@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Box, Heading, Text, Button, Fade, useMediaQuery } from "@chakra-ui/react";
+import { Box, Heading, Text, Button, Fade, useMediaQuery, Link } from "@chakra-ui/react";
 import dynamic from "next/dynamic";
 
 const ReactPlayer = dynamic(() => import("react-player"), { ssr: false });
@@ -58,8 +58,10 @@ const HeroBanner = () => {
         >
           Protege tu inversión con nuestras garantías de autos.
         </Text>
-        <Button colorScheme="blue" size="lg" zIndex={1}>
-          Obtén tu garantía ahora
+        <Button colorScheme="blue" size="lg" zIndex={1} onClick={() => router.push('/contactanos')}>
+          <Link href="/contactanos">
+            Obtén tu garantía ahora
+          </Link>
         </Button>
       </Box>
     </Fade>

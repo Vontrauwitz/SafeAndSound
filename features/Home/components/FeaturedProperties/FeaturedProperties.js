@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Box, Image, Button } from "@chakra-ui/react";
+import { Box, Image, useColorModeValue } from "@chakra-ui/react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -68,6 +68,7 @@ const FeaturedProperties = () => {
             position="relative"
             onClick={() => setCurrentSlide(index)}
             cursor="pointer"
+            bg="black"
           >
             <Box
               position="absolute"
@@ -76,6 +77,8 @@ const FeaturedProperties = () => {
               width="100%"
               height="100%"
               bgGradient="linear(to-t, blackAlpha.500, transparent)"
+              bg={useColorModeValue("blackAlpha.900")}
+              opacity={0.8}
             />
             <Image
               src={slide.imageUrl}
@@ -94,3 +97,4 @@ const FeaturedProperties = () => {
 };
 
 export default FeaturedProperties;
+
