@@ -2,12 +2,20 @@ import { HiPhoneArrowUpRight } from "react-icons/hi2";
 import { AiOutlineWhatsApp } from "react-icons/ai";
 
 export const navigationLinks = [
-  { title: 'Productos', link: '/productos' },
+  {
+    title: 'Productos',
+    link: '',
+    sublinks: [
+      { title: 'GarantiAuto', link: '/productos' },
+      { title: 'GarantiRevisa', link: '/producto-2' },
+      { title: 'GarantiPutazos', link: '/producto-3' }
+    ],
+  },
   { title: 'Nosotros', link: '/nosotros' },
-  { title: '+ 52 (55) 5555 5555', link: 'tel:(55) 55555555', icon: <HiPhoneArrowUpRight /> },
+  { title: '+ 52 (55)33124708', link: 'tel:(55)33124708', icon: <HiPhoneArrowUpRight /> },
   {
     title: 'WhatsApp',
-    link: 'https://api.whatsapp.com/send?phone=15521288107',
+    link: 'https://api.whatsapp.com/send?phone=15533124708',
     icon: <AiOutlineWhatsApp />
   },
 ];

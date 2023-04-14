@@ -1,8 +1,9 @@
-import React from 'react';
-import { Box, Button, Flex, Image, Text } from '@chakra-ui/react'
-import { HiHomeModern } from 'react-icons/hi2'
+import react, { useState } from 'react';
+import { Box, Button, Flex, Image, Text } from '@chakra-ui/react';
+import { HiHomeModern } from 'react-icons/hi2';
+import { FaUsers, FaProductHunt, FaPhone } from 'react-icons/fa';
 import Link from 'next/link';
-import { navigationLinks } from '../../navigationConsts'
+import { navigationLinks } from '../../navigationConsts';
 
 const NavigationDesktop = () => {
   return (
@@ -12,18 +13,10 @@ const NavigationDesktop = () => {
       backgroundColor='white'
       display={{ base: 'none', md: 'block' }}
     >
-      <Box
-        maxWidth='1280px'
-        margin='0 auto'
-      >
-        <Flex
-          alignItems='center'
-          justifyContent='space-between'
-        >
+      <Box maxWidth='1280px' margin='0 auto'>
+        <Flex alignItems='center' justifyContent='space-between'>
           <Link href='/'>
-            <Box
-              display='flex'
-              alignItems='center'>
+            <Box display='flex' alignItems='center'>
               <Image
                 src='./hero/garantimexlogo.png'
                 alt='garantimex'
@@ -31,39 +24,78 @@ const NavigationDesktop = () => {
               />
             </Box>
           </Link>
-          <Flex
-            gap='100'
-            alignItems='center'
-            fontWeight='medium'
-          >
+          <Flex gap='100' alignItems='center' fontWeight='medium'>
             {navigationLinks.map((item) => (
               <NavigationLink key={item.title} {...item} />
             ))}
-            {/* <Button
-              padding='1.5rem'
-              colorScheme='twitter'
-              fontSize='0.8rem'
-              fontWeight='medium'>
-              CREATE LISTING
-            </Button> */}
           </Flex>
         </Flex>
       </Box>
     </Box>
   );
-}
+};
 
 export default NavigationDesktop;
 
-//componente personalizado.  como lo usamos en las dos despues cambiar a un componente independiente y usarlo en ambos lados desktop/mobile
+const NavigationLink = ({ title, link, icon, sublinks }) => {
+  const [isOpen, setIsOpen] = useState(false);
 
-const NavigationLink = ({ title, link, icon }) => {
+  const handleToggle = () => setIsOpen(!isOpen);
+
   return (
-    <Link href={link}>
-      <Flex alignItems='center' gap='0.5rem'>
-        {icon}
-        {title}
-      </Flex>
-    </Link>
-  )
-}
+    <Box position='relative'>
+      {sublinks ? (
+        <Box
+          position='relative'
+          onMouseEnter={handleToggle}
+          onMouseLeave={handleToggle}
+        >
+          <Link href={link}>
+            <Flex alignItems='center' gap='0.5rem'>
+              {icon}
+              {title}
+            </Flex>
+          </Link>
+          {isOpen && (
+            <Box
+              position='absolute'
+              top='100%'
+              left='0'
+              minWidth='120px'
+              zIndex='10'
+              backgroundColor='white'
+              boxShadow='md'
+              py='1rem'
+            >
+              <Box maxWidth='1280px' margin='0 auto'>
+                <Flex flexWrap='wrap' gap='1rem'>
+                  {sublinks.map((item) => (
+                    <Box key={item.title}>
+                      <Link href={item.link}>
+                        <Text
+                          display='block'
+                          padding='0.5rem'
+                          color='black.600'
+                          _hover={{ backgroundColor: 'gray.100' }}
+                        >
+                          {item.title}
+                        </Text>
+                      </Link>
+                    </Box>
+                  ))}
+                </Flex>
+              </Box>
+            </Box>
+          )}
+        </Box>
+      ) : (
+        <Link href={link}>
+          <Flex alignItems='center' gap='0.5rem'>
+            {icon}
+            {title}
+          </Flex>
+        </Link>
+      )}
+    </Box>
+  );
+};
