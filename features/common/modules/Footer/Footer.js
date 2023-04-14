@@ -26,16 +26,18 @@ const Footer = () => {
             ))}
           </Flex>
           <Flex flexDirection='column'>
-            <FooterHeader title='Garantias' />
+            <FooterHeader title='Servicios' />
             {garantias.map((item) => (
               <FooterLink key={item.name} {...item} />
             ))}
-          </Flex>  <Flex flexDirection='column'>
+          </Flex>
+          {/* <Flex flexDirection='column'>
             <FooterHeader title='Contactanos' />
             {trabajaConNosotros.map((item) => (
               <FooterLink key={item.name} {...item} />
             ))}
-          </Flex>  <Flex flexDirection='column'>
+          </Flex>   */}
+          <Flex flexDirection='column'>
             <FooterHeader title='Nuestras Oficinas' />
             {nuestrasOficinas.map((item) => (
               <FooterLink key={item.name} {...item} />

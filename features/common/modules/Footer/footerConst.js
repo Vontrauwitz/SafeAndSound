@@ -29,21 +29,21 @@
 //   { name: "Palm Jumeirah", link: "/office/palm-jumeirah" }
 // ];
 export const servicios = [
-  { name: "Nuestros Servicios", link: "/" },
-  { name: "Conocenos", link: "/" },
+  // { name: "Nuestros Servicios", link: "/" },
+  { name: "Conocenos", link: "/nosotros" },
 ];
 
 export const garantias = [
-  { name: "Auto", link: "/" },
-  { name: "Llantas", link: "/" },
-  { name: "Movil", link: "/" },
-  { name: "GAP", link: "/" },
+  { name: "Garanti-Auto", link: "/productos" },
+  { name: "revisión", link: "/" },
+  // { name: "Movil", link: "/" },
+  // { name: "GAP", link: "/" },
 ];
 
-export const trabajaConNosotros = [
-  { name: "Clientes", link: "/clientes" },
-  { name: "Talleres", link: "/" },
-];
+// export const trabajaConNosotros = [
+//   { name: "Clientes", link: "/clientes" },
+//   { name: "Talleres", link: "/ServiciosDeRevision" },
+// ];
 
 export const nuestrasOficinas = [
   { name: "CDMX", link: "/" },

@@ -7,8 +7,8 @@ export const navigationLinks = [
     link: '',
     sublinks: [
       { title: 'GarantiAuto', link: '/productos' },
-      { title: 'GarantiRevisa', link: '/producto-2' },
-      { title: 'GarantiPutazos', link: '/producto-3' }
+      { title: 'GarantiRevisa', link: '/ServiciosDeRevision' },
+      // { title: 'GarantiPutazos', link: '/producto-3' }
     ],
   },
   { title: 'Nosotros', link: '/nosotros' },
